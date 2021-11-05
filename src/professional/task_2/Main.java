@@ -12,15 +12,24 @@ public class Main {
         for (int i = 0; i < 5; i++) {
            list.add(sc.next());
         }
-        list = doubleValues(list);
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+            concatList(doubleValues(list.get(i)));
+            System.out.println(concatList(doubleValues(list.get(i))));
         }
     }
-    static <T> List<T> doubleValues(List<T> list){
-        for (int i = 0; i < list.size(); i+=2) {
-            list.add(i, list.get(i));
+
+    static <String> List<java.lang.String> doubleValues(java.lang.String str) {
+        ArrayList<java.lang.String> al = new ArrayList<>(List.of(str.split("")));
+        for (int j = 0; j < al.size(); j += 2) {
+            al.add(j, al.get(j));
         }
-        return list;
+        return al;
+    }
+    static String concatList(List<String> list){
+        StringBuilder sb = new StringBuilder();
+        for (String temp: list) {
+            sb.append(temp);
+        }
+        return sb.toString();
     }
 }
